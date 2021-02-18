@@ -1,0 +1,21 @@
+#header {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    background:rgb(5, 176, 243);
+    text-align: center;
+ }
+ #footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background:rgb(236, 242, 245);
+    text-align: center;
+ }
+ #middle{
+     position:inherit;
+     margin: 10%;
+     padding-bottom: 5%;
+ }
