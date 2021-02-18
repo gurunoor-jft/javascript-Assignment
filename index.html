@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gurunoor-JS Assignment</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -8,9 +9,10 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<div>
+<div class="container-fluid">
     <div id="header">
         <h1>Gurunoor-JS Assignment</h1>
+        <p>Count :<spam id="count"></spam></p>
     </div>
 
 <div id="middle">
@@ -46,19 +48,21 @@
     </div>
   </div>
 
-
-    <table align="center">
-        <tr>
-            <th>ID</th>
-            <th>First Name</th>
-            <th>Last Name</th>
-            <th>Delete</th>
-            <th>Edit</th>
-        </tr>
-        <tbody id="data">
-            
-        </tbody>
-    </table>
+<div style="overflow-x:auto;">
+  <table align="center">
+    <tr>
+        <th>ID</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Delete</th>
+        <th>Edit</th>
+    </tr>
+    <tbody id="data">
+        
+    </tbody>
+</table>
+</div>
+    
   </div>
     <div id="footer">
       <h1>CRUD</h1>

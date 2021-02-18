@@ -16,6 +16,7 @@
  }
  #middle{
      position:inherit;
-     margin: 10%;
+     margin-top: 140px;
+     width: auto;
      padding-bottom: 5%;
  }
