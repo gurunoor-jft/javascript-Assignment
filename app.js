@@ -11,10 +11,10 @@ method: "GET",
 			data.forEach((u) => {
 				temp +="<tr>";
 				temp+="<td>"+ i++ +"</td>";
-				temp+="<td>"+u.name+"</td>";
-				temp+="<td>"+u.email+"</td>";
+				temp+="<td id='editName'>"+u.name+"</td>";
+				temp+="<td id='editEmail'>"+u.email+"</td>";
 				temp+='<td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#DeleteButton" onclick=store('+(i-1)+')>Delete Details</button></td>';
-				temp+='<td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#EditButton" onclick=store('+(i-1)+')>Edit Details</button></td>';
+				temp+='<td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#EditButton" onclick=editFun('+(i-1)+')>Edit Details</button></td>';
 				temp+="</tr>";	
 				dataarr.push({id:u.id,name:u.name,email:u.email});
 			})
@@ -75,7 +75,7 @@ function addFunction(){
 			temp+="<td id='tdName"+i+"' role='cell'>"+u.name+"</td>";
 			temp+="<td id='idEmail"+i+"' role='cell'>"+u.email+"</td>";
 			temp+='<td role="cell"><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#DeleteButton" onclick=store('+(i-1)+')>Delete Details</button></td>';
-			temp+='<td role="cell"><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#EditButton" onclick=store('+(i-1)+')>Edit Details</button></td>';
+			temp+='<td role="cell"><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#EditButton" onclick=editFun('+(i-1)+')>Edit Details</button></td>';
 			temp+="</tr>";	
 			
 		})
@@ -116,10 +116,21 @@ function editFunction(){
 			temp+="<td id='tdName"+i+"' role='cell'>"+u.name+"</td>";
 			temp+="<td id='idEmail"+i+"' role='cell'>"+u.email+"</td>";
 			temp+='<td role="cell"><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#DeleteButton" onclick=store('+(i-1)+')>Delete Details</button></td>';
-			temp+='<td role="cell"><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#EditButton" onclick=store('+(i-1)+')>Edit Details</button></td>';
+			temp+='<td role="cell"><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#EditButton" onclick=editFun('+(i-1)+')>Edit Details</button></td>';
 			temp+="</tr>";		
 			
 		})
 		document.getElementById("data").innerHTML= temp;
 	count(i);
+}
+function editFun(editid){
+	var i=1;
+	for(i=1;i<=dataarr.length;i++){
+		if(i === editid){
+			document.getElementById('editName').value=dataarr[editid -1].name;
+			document.getElementById('editEmail').value=dataarr[editid -1].email;
+			store(editid);
+			break;
+		}
+	}
 }
