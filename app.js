@@ -41,7 +41,7 @@ function deleteFunction(){
 			temp+="<td id='tdName"+i+"' role='cell'>"+u.name+"</td>";
 			temp+="<td id='idEmail"+i+"' role='cell'>"+u.email+"</td>";
 			temp+='<td role="cell"><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#DeleteButton" onclick=store('+(i-1)+')>Delete Details</button></td>';
-			temp+='<td role="cell"><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#EditButton" onclick=store('+(i-1)+')>Edit Details</button></td>';
+			temp+='<td role="cell"><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#EditButton" onclick=editFun('+(i-1)+')>Edit Details</button></td>';
 			temp+="</tr>";	
 		})
 		document.getElementById("data").innerHTML= temp;
