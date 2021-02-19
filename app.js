@@ -81,6 +81,7 @@ function addFunction(){
 		})
 		document.getElementById("data").innerHTML= temp;
 	}
+	document.getElementById("addForm").reset();
 	count(i);
 }
 function count(total){
