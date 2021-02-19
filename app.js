@@ -53,11 +53,18 @@ function addFunction(){
 	var ids=dataarr.length +1;
 	var	Name= document.getElementById('Name').value;
 	var	Email= document.getElementById('Email').value;
-	if(Name === null || Email === null || Name ==="" || Email==="") 
+	var mailformat = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+	if(Name === null || Name === "") 
 	{
-		alert("Enter Details");
+		alert("Enter Name");
 	}
-	else
+	else if(Email === null || Email === ""){
+		alert("Enter Email");
+	}
+	else if(!Email.match(mailformat)){
+		alert("Please Fill Email in xxx@gxxx.com format");
+	}
+	else{
 	dataarr.push({id:ids,name:Name,email:Email});
 	if(dataarr.length > 0){
 		var temp="";
