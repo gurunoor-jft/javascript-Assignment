@@ -64,7 +64,7 @@ function addFunction(){
 	else if(!Email.match(mailformat)){
 		alert("Please Fill Email in xxx@gxxx.com format");
 	}
-	else{
+	else
 	dataarr.push({id:ids,name:Name,email:Email});
 	if(dataarr.length > 0){
 		var temp="";
