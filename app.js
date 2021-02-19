@@ -1,4 +1,5 @@
 var dataarr=[];
+var a;
 var api_url="https://jsonplaceholder.typicode.com/users";
 fetch(api_url,{
 method: "GET",
@@ -9,11 +10,11 @@ method: "GET",
 			var temp="";
 			data.forEach((u) => {
 				temp +="<tr>";
-				temp+="<td>"+ u.id +"</td>";
+				temp+="<td>"+ i++ +"</td>";
 				temp+="<td>"+u.name+"</td>";
 				temp+="<td>"+u.email+"</td>";
-				temp+='<td><button onclick="Deletefunction('+u.id+')">Delete</button></td>';
-				temp+='<td><button onclick="Editfunction()">Edit</button></td>';
+				temp+='<td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#DeleteButton" onclick=store('+(i-1)+')>Delete Details</button></td>';
+				temp+='<td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#EditButton" onclick=store('+(i-1)+')>Edit Details</button></td>';
 				temp+="</tr>";	
 				dataarr.push({id:u.id,name:u.name,email:u.email});
 			})
@@ -25,20 +26,22 @@ method: "GET",
 .catch(error=>{
 	console.log(error);
 });
-
-function Deletefunction(numbersssss){
-	console.log(numbersssss);
-	dataarr.splice((numbersssss-2),1);
+function store(ArrayData){
+    a=ArrayData;
+}
+function deleteFunction(){
+    console.log(a);
+	dataarr.splice((a-1),1);
 	
 		var temp="";
 		var i=1;
 		dataarr.forEach((u) => {
-			temp +="<tr>";
-			temp+="<td>"+ i++ +"</td>";
-			temp+="<td>"+u.name+"</td>";
-			temp+="<td>"+u.email+"</td>";
-			temp+='<td><button onclick="Deletefunction('+(i-1 )+')">Delete</button></td>';
-			temp+='<td><button onclick="Editfunction()">Edit</button></td>';
+			temp +="<tr role='row'>";
+			temp+="<td role='cell'>"+ i++ +"</td>";
+			temp+="<td id='tdName"+i+"' role='cell'>"+u.name+"</td>";
+			temp+="<td id='idEmail"+i+"' role='cell'>"+u.email+"</td>";
+			temp+='<td role="cell"><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#DeleteButton" onclick=store('+(i-1)+')>Delete Details</button></td>';
+			temp+='<td role="cell"><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#EditButton" onclick=store('+(i-1)+')>Edit Details</button></td>';
 			temp+="</tr>";	
 		})
 		document.getElementById("data").innerHTML= temp;
@@ -46,7 +49,7 @@ function Deletefunction(numbersssss){
 }
 
 
-function Addfunction(){
+function addFunction(){
 	var ids=dataarr.length +1;
 	var	Name= document.getElementById('Name').value;
 	var	Email= document.getElementById('Email').value;
@@ -60,12 +63,12 @@ function Addfunction(){
 		var temp="";
 		var i=1;
 		dataarr.forEach((u) => {
-			temp +="<tr>";
-			temp+="<td>"+ i++ +"</td>";
-			temp+="<td>"+u.name+"</td>";
-			temp+="<td>"+u.email+"</td>";
-			temp+='<td><button onclick="Deletefunction('+ (i-1) +')">Delete</button></td>';
-			temp+='<td><button onclick="Editfunction()">Edit</button></td>';
+			temp +="<tr role='row'>";
+			temp+="<td role='cell'>"+ i++ +"</td>";
+			temp+="<td id='tdName"+i+"' role='cell'>"+u.name+"</td>";
+			temp+="<td id='idEmail"+i+"' role='cell'>"+u.email+"</td>";
+			temp+='<td role="cell"><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#DeleteButton" onclick=store('+(i-1)+')>Delete Details</button></td>';
+			temp+='<td role="cell"><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#EditButton" onclick=store('+(i-1)+')>Edit Details</button></td>';
 			temp+="</tr>";	
 			
 		})
@@ -75,4 +78,41 @@ function Addfunction(){
 }
 function count(total){
 	document.getElementById("count").innerHTML=total-1;
+}
+function editFunction(){
+    var	Name= document.getElementById('editName').value;
+	var	Email= document.getElementById('editEmail').value;
+	var mailformat = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+	if(Name === null || Name === "") 
+	{
+		alert("Enter Name");
+	}
+	else if(Email === null || Email === ""){
+		alert("Enter Email");
+	}
+	else if(!Email.match(mailformat)){
+		alert("Please Fill Email in xxx@gxxx.com format");
+	}
+	else{
+    var i=1;
+    for(i=1;i<=dataarr.length;i++){
+        if(i === a){
+                    dataarr[i-1].name =Name;
+                    dataarr[i-1].email=Email;
+        }
+    }}
+    var temp="";
+		var i=1;
+		dataarr.forEach((u) => {
+			temp +="<tr role='row'>";
+			temp+="<td role='cell'>"+ i++ +"</td>";
+			temp+="<td id='tdName"+i+"' role='cell'>"+u.name+"</td>";
+			temp+="<td id='idEmail"+i+"' role='cell'>"+u.email+"</td>";
+			temp+='<td role="cell"><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#DeleteButton" onclick=store('+(i-1)+')>Delete Details</button></td>';
+			temp+='<td role="cell"><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#EditButton" onclick=store('+(i-1)+')>Edit Details</button></td>';
+			temp+="</tr>";		
+			
+		})
+		document.getElementById("data").innerHTML= temp;
+	count(i);
 }

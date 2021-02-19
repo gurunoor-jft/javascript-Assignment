@@ -3,8 +3,9 @@
     left: 0;
     top: 0;
     width: 100%;
-    background:rgb(5, 176, 243);
+    background:rgb(42, 193, 253);
     text-align: center;
+    z-index: 1;
  }
  #footer {
     position: fixed;
@@ -18,5 +19,60 @@
      position:inherit;
      margin-top: 140px;
      width: auto;
-     padding-bottom: 5%;
+     z-index: -1;
  }
+
+
+	@media
+	  only screen 
+    and (max-width: 760px), (min-device-width: 768px) 
+    and (max-device-width: 1024px)  {
+
+		
+		table, thead, tbody, th, td, tr {
+			display: block;
+		}
+
+		
+		thead tr {
+			position: absolute;
+			top: -9999px;
+			left: -9999px;
+		}
+
+    tr {
+      margin: 0 0 1rem 0;
+    }
+    #middle{
+        position:inherit;
+        margin-top: 140px;
+        width: auto;
+        margin-bottom: 20%;
+        z-index: -1;
+    }
+    tr:nth-child(odd) {
+      background: #ccc;
+    }
+    
+		td {
+			
+			border: none;
+			border-bottom: 1px solid #eee;
+			position: relative;
+			padding-left: 50%;
+		}
+
+		td:before {
+			position: absolute;
+			top: 0;
+			left: 6px;
+			width: 45%;
+			padding-right: 10px;
+			white-space: nowrap;
+		}
+        td:nth-of-type(1):before { content: "ID"; }
+		td:nth-of-type(2):before { content: "Name"; }
+		td:nth-of-type(3):before { content: "Email"; }
+		td:nth-of-type(4):before { content: "Delete"; }
+		td:nth-of-type(5):before { content: "Edit"; }
+	}	

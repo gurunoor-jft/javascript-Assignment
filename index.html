@@ -21,7 +21,7 @@
     ADD Details
   </button>
   
-  <!-- Modal -->
+  <!-- Add Modal -->
   <div class="modal fade" id="AddButton" tabindex="-1" role="dialog" aria-labelledby="AddButton" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
@@ -42,26 +42,77 @@
         </div>  
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="submit" class="btn btn-primary" data-dismiss="modal" onclick="Addfunction()">ADD Details</button>
+          <button type="submit" class="btn btn-primary" data-dismiss="modal" onclick="addFunction()">ADD Details</button>
         </div>
       </div>
     </div>
-  </div>
+  </div> <!--End of Add Modal-->
 
-<div style="overflow-x:auto;">
-  <table align="center">
-    <tr>
-        <th>ID</th>
-        <th>First Name</th>
-        <th>Last Name</th>
-        <th>Delete</th>
-        <th>Edit</th>
+
+  <!-- Delete Modal -->
+  <div class="modal fade" id="DeleteButton" tabindex="-1" role="dialog" aria-labelledby="DeleteButton" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3 class="modal-title" id="DeleteButton"><strong>Delete</strong></h3>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <h5>Do You Want to Delete?</h5>
+        </div>  
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-primary" data-dismiss="modal" onclick="deleteFunction()">Delete</button>
+        </div>
+      </div>
+    </div>
+  </div> <!--End of Delete Modal-->
+
+  <!-- Edit Modal -->
+  <div class="modal fade" id="EditButton" tabindex="-1" role="dialog" aria-labelledby="EditButton" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3 class="modal-title" id="EditButton"><strong>Edit</strong></h3>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <label for="Name">Name:</label>
+                <input type="text" id="editName" required><br>
+                <label for="Email">Email:</label>
+                <input type="text" id="editEmail" required><br>
+          </form>
+        </div>  
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-primary" data-dismiss="modal" onclick="editFunction()">Edit</button>
+        </div>
+      </div>
+    </div>
+  </div> <!--End of Edit Modal-->
+
+
+  <table align="center" role="table">
+    <thead role="rowgroup">
+      <tr>
+        <th role="columnheader">ID</th>
+        <th role="columnheader">First Name</th>
+        <th role="columnheader">Last Name</th>
+        <th role="columnheader">Delete</th>
+        <th role="columnheader">Edit</th>
     </tr>
-    <tbody id="data">
+    </thead>
+    
+    <tbody id="data" role="rowgroup">
         
     </tbody>
 </table>
-</div>
+
     
   </div>
     <div id="footer">
