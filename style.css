@@ -96,3 +96,7 @@ td{
   text-align: center;
   padding: 2px;
 }
+table { 
+  border-collapse: separate;
+  border-spacing: 0 1em;
+}
