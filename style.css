@@ -1,3 +1,4 @@
+
 #header {
     position: fixed;
     left: 0;
@@ -17,9 +18,10 @@
  }
  #middle{
      position:inherit;
-     margin-top: 140px;
+     margin-top: 160px;
      width: auto;
      z-index: -1;
+
  }
 
 
@@ -27,13 +29,26 @@
 	  only screen 
     and (max-width: 760px), (min-device-width: 768px) 
     and (max-device-width: 1024px)  {
-
-		
+        #header {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 100%;
+            background:rgb(42, 193, 253);
+            text-align: center;
+            z-index: 1;
+         }
+         #footer {
+            position: fixed;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            background:rgb(236, 242, 245);
+            text-align: center;
+         }
 		table, thead, tbody, th, td, tr {
 			display: block;
-		}
-
-		
+		}		
 		thead tr {
 			position: absolute;
 			top: -9999px;
@@ -45,9 +60,9 @@
     }
     #middle{
         position:inherit;
-        margin-top: 140px;
+        margin-top: 200px;
         width: auto;
-        margin-bottom: 20%;
+        margin-bottom: 35%;
         z-index: -1;
     }
     tr:nth-child(odd) {
@@ -59,7 +74,7 @@
 			border: none;
 			border-bottom: 1px solid #eee;
 			position: relative;
-			padding-left: 50%;
+			padding-left: 20%;
 		}
 
 		td:before {
@@ -70,9 +85,12 @@
 			padding-right: 10px;
 			white-space: nowrap;
 		}
-        td:nth-of-type(1):before { content: "ID"; }
-		td:nth-of-type(2):before { content: "Name"; }
-		td:nth-of-type(3):before { content: "Email"; }
-		td:nth-of-type(4):before { content: "Delete"; }
-		td:nth-of-type(5):before { content: "Edit"; }
 	}	
+.btnmar{
+  margin-bottom: 10px;
+}
+td{
+  position:initial;
+  text-align: center;
+  padding: 2px;
+}

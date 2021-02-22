@@ -1,7 +1,28 @@
 var dataarr=[];
 var a;
+var fetched = false;
 var api_url="https://jsonplaceholder.typicode.com/users";
-fetch(api_url,{
+const load = async () =>{
+	let result = await fetch(api_url)
+	let db = await result.json()
+	var i=1;
+	
+			var temp="";
+			db.forEach((u) => {
+				temp +="<tr>";
+				temp+="<td>"+ i++ +"</td>";
+				temp+="<td id='editName'>"+u.name+"</td>";
+				temp+="<td id='editEmail'>"+u.email+"</td>";
+				temp+='<td><button style="color:red" type="button" class="fas fa-trash" data-toggle="modal" data-target="#DeleteButton" onclick=store('+(i-1)+')></button></td>';
+				temp+='<td><button style="color:DeepSkyBlue" type="button" class="fas fa-edit" data-toggle="modal" data-target="#EditButton" onclick=editFun('+(i-1)+')></button></td>';
+				temp+="</tr>";	
+				dataarr.push({id:u.id,name:u.name,email:u.email});
+			})
+			document.getElementById("count").innerHTML=dataarr.length;
+			document.getElementById("data").innerHTML= temp;
+	fetched = true;
+}
+/*fetch(api_url,{
 method: "GET",
 }).then((db) => db.json()
 .then(data => {
@@ -13,8 +34,8 @@ method: "GET",
 				temp+="<td>"+ i++ +"</td>";
 				temp+="<td id='editName'>"+u.name+"</td>";
 				temp+="<td id='editEmail'>"+u.email+"</td>";
-				temp+='<td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#DeleteButton" onclick=store('+(i-1)+')>Delete Details</button></td>';
-				temp+='<td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#EditButton" onclick=editFun('+(i-1)+')>Edit Details</button></td>';
+				temp+='<td><button type="button" class="fas fa-trash" data-toggle="modal" data-target="#DeleteButton" onclick=store('+(i-1)+')></button></td>';
+				temp+='<td><button type="button" class="fas fa-edit" data-toggle="modal" data-target="#EditButton" onclick=editFun('+(i-1)+')></button></td>';
 				temp+="</tr>";	
 				dataarr.push({id:u.id,name:u.name,email:u.email});
 			})
@@ -25,12 +46,11 @@ method: "GET",
 ))
 .catch(error=>{
 	console.log(error);
-});
+});*/
 function store(ArrayData){
     a=ArrayData;
 }
 function deleteFunction(){
-    console.log(a);
 	dataarr.splice((a-1),1);
 	
 		var temp="";
@@ -40,16 +60,21 @@ function deleteFunction(){
 			temp+="<td role='cell'>"+ i++ +"</td>";
 			temp+="<td id='tdName"+i+"' role='cell'>"+u.name+"</td>";
 			temp+="<td id='idEmail"+i+"' role='cell'>"+u.email+"</td>";
-			temp+='<td role="cell"><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#DeleteButton" onclick=store('+(i-1)+')>Delete Details</button></td>';
-			temp+='<td role="cell"><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#EditButton" onclick=editFun('+(i-1)+')>Edit Details</button></td>';
+			temp+='<td><button style="color:red" type="button" class="fas fa-trash" data-toggle="modal" data-target="#DeleteButton" onclick=store('+(i-1)+')></button></td>';
+				temp+='<td><button style="color:DeepSkyBlue" type="button" class="fas fa-edit" data-toggle="modal" data-target="#EditButton" onclick=editFun('+(i-1)+')></button></td>';
 			temp+="</tr>";	
 		})
 		document.getElementById("data").innerHTML= temp;
 	count(i);
 }
-
-
+checker();
+async function checker(){
+	if(!fetched){
+		await load();
+	}
+}
 function addFunction(){
+
 	var ids=dataarr.length +1;
 	var	Name= document.getElementById('Name').value;
 	var	Email= document.getElementById('Email').value;
@@ -74,8 +99,8 @@ function addFunction(){
 			temp+="<td role='cell'>"+ i++ +"</td>";
 			temp+="<td id='tdName"+i+"' role='cell'>"+u.name+"</td>";
 			temp+="<td id='idEmail"+i+"' role='cell'>"+u.email+"</td>";
-			temp+='<td role="cell"><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#DeleteButton" onclick=store('+(i-1)+')>Delete Details</button></td>';
-			temp+='<td role="cell"><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#EditButton" onclick=editFun('+(i-1)+')>Edit Details</button></td>';
+			temp+='<td><button style="color:red" type="button" class="fas fa-trash" data-toggle="modal" data-target="#DeleteButton" onclick=store('+(i-1)+')></button></td>';
+			temp+='<td><button style="color:DeepSkyBlue" type="button" class="fas fa-edit" data-toggle="modal" data-target="#EditButton" onclick=editFun('+(i-1)+')></button></td>';
 			temp+="</tr>";	
 			
 		})
@@ -116,8 +141,8 @@ function editFunction(){
 			temp+="<td role='cell'>"+ i++ +"</td>";
 			temp+="<td id='tdName"+i+"' role='cell'>"+u.name+"</td>";
 			temp+="<td id='idEmail"+i+"' role='cell'>"+u.email+"</td>";
-			temp+='<td role="cell"><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#DeleteButton" onclick=store('+(i-1)+')>Delete Details</button></td>';
-			temp+='<td role="cell"><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#EditButton" onclick=editFun('+(i-1)+')>Edit Details</button></td>';
+			temp+='<td><button type="button" class="fas fa-trash" data-toggle="modal" data-target="#DeleteButton" onclick=store('+(i-1)+')></button></td>';
+				temp+='<td><button type="button" class="fas fa-edit" data-toggle="modal" data-target="#EditButton" onclick=editFun('+(i-1)+')></button></td>';
 			temp+="</tr>";		
 			
 		})
