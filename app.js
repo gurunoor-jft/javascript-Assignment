@@ -2,6 +2,7 @@ var dataarr=[];
 var a;
 var fetched = false;
 var api_url="https://jsonplaceholder.typicode.com/users";
+count(1);
 const load = async () =>{
 	let result = await fetch(api_url)
 	let db = await result.json()
