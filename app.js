@@ -141,8 +141,8 @@ function editFunction(){
 			temp+="<td role='cell'>"+ i++ +"</td>";
 			temp+="<td id='tdName"+i+"' role='cell'>"+u.name+"</td>";
 			temp+="<td id='idEmail"+i+"' role='cell'>"+u.email+"</td>";
-			temp+='<td><button type="button" class="fas fa-trash" data-toggle="modal" data-target="#DeleteButton" onclick=store('+(i-1)+')></button></td>';
-				temp+='<td><button type="button" class="fas fa-edit" data-toggle="modal" data-target="#EditButton" onclick=editFun('+(i-1)+')></button></td>';
+			temp+='<td><button style="color:red" type="button" class="fas fa-trash" data-toggle="modal" data-target="#DeleteButton" onclick=store('+(i-1)+')></button></td>';
+				temp+='<td><button style="color:DeepSkyBlue" type="button" class="fas fa-edit" data-toggle="modal" data-target="#EditButton" onclick=editFun('+(i-1)+')></button></td>';
 			temp+="</tr>";		
 			
 		})
