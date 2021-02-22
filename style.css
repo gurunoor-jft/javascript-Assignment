@@ -15,12 +15,14 @@
     width: 100%;
     background:rgb(236, 242, 245);
     text-align: center;
+    height: 80px;
  }
  #middle{
      position:inherit;
      margin-top: 160px;
      width: auto;
      z-index: -1;
+     margin-bottom: 80px;
 
  }
 
