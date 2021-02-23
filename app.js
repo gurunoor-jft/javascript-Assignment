@@ -83,15 +83,25 @@ function addFunction(){
 	if(Name === null || Name === "") 
 	{
 		alert("Enter Name");
+		document.getElementById("Name").style.borderColor = "red";
+		return false;
 	}
 	else if(Email === null || Email === ""){
 		alert("Enter Email");
+		document.getElementById("Name").style.borderColor = "black";
+		document.getElementById("Email").style.borderColor = "red";
+		return false;
 	}
 	else if(!Email.match(mailformat)){
 		alert("Please Fill Email in xxx@gxxx.com format");
+		document.getElementById("Name").style.borderColor = "black";
+		document.getElementById("Email").style.borderColor = "red";
+		return false;
 	}
 	else
 	dataarr.push({id:ids,name:Name,email:Email});
+	document.getElementById("Name").style.borderColor = "black";
+		document.getElementById("Email").style.borderColor = "black"; 
 	if(dataarr.length > 0){
 		var temp="";
 		var i=1;
@@ -109,6 +119,8 @@ function addFunction(){
 	}
 	document.getElementById("addForm").reset();
 	count(i);
+	$('#AddButton').modal('hide');
+            return;
 }
 function count(total){
 	document.getElementById("count").innerHTML=total-1;
@@ -120,15 +132,25 @@ function editFunction(){
 	if(Name === null || Name === "") 
 	{
 		alert("Enter Name");
+		document.getElementById("editName").style.borderColor = "red";
+		return false;
 	}
 	else if(Email === null || Email === ""){
 		alert("Enter Email");
+		document.getElementById("editName").style.borderColor = "black";
+		document.getElementById("editEmail").style.borderColor = "red";		
+		return false;
 	}
 	else if(!Email.match(mailformat)){
 		alert("Please Fill Email in xxx@gxxx.com format");
+		document.getElementById("editName").style.borderColor = "black";
+		document.getElementById("editEmail").style.borderColor = "red"; 
+		return false;
 	}
 	else{
     var i=1;
+	document.getElementById("editName").style.borderColor = "black";
+		document.getElementById("editEmail").style.borderColor = "black"; 
     for(i=1;i<=dataarr.length;i++){
         if(i === a){
                     dataarr[i-1].name =Name;
@@ -149,6 +171,8 @@ function editFunction(){
 		})
 		document.getElementById("data").innerHTML= temp;
 	count(i);
+	$('#EditButton').modal('hide');
+            return;
 }
 function editFun(editid){
 	var i=1;
@@ -160,4 +184,12 @@ function editFun(editid){
 			break;
 		}
 	}
+}
+function Close(){
+	document.getElementById("Name").value="";
+	document.getElementById("Email").value="";
+	document.getElementById("Name").style.borderColor = "black";
+	document.getElementById("Email").style.borderColor = "black"; 
+	document.getElementById("editName").style.borderColor = "black";
+	document.getElementById("editEmail").style.borderColor = "black"; 
 }

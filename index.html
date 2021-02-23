@@ -25,7 +25,7 @@
  
   
   <!-- Add Modal -->
-  <div class="modal fade" id="AddButton" tabindex="-1" role="dialog" aria-labelledby="AddButton" aria-hidden="true">
+  <div class="modal fade" id="AddButton" tabindex="-1" role="dialog" data-keyboard="false" data-backdrop="static" aria-labelledby="AddButton" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
         <div class="modal-header">
@@ -44,8 +44,8 @@
         </form>
         </div>  
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="submit" class="btn btn-primary" data-dismiss="modal" onclick="addFunction()">ADD Details</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="Close()">Close</button>
+          <button type="submit" class="btn btn-primary" data-backdrop="static" onclick="addFunction()">ADD Details</button>
         </div>
       </div>
     </div>
@@ -53,7 +53,7 @@
 
 
   <!-- Delete Modal -->
-  <div class="modal fade" id="DeleteButton" tabindex="-1" role="dialog" aria-labelledby="DeleteButton" aria-hidden="true">
+  <div class="modal fade" id="DeleteButton" tabindex="-1" role="dialog" data-keyboard="false" data-backdrop="static" aria-labelledby="DeleteButton" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
         <div class="modal-header">
@@ -74,7 +74,7 @@
   </div> <!--End of Delete Modal-->
 
   <!-- Edit Modal -->
-  <div class="modal fade" id="EditButton" tabindex="-1" role="dialog" aria-labelledby="EditButton" aria-hidden="true">
+  <div class="modal fade" id="EditButton" tabindex="-1" role="dialog" data-keyboard="false" data-backdrop="static" aria-labelledby="EditButton" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
         <div class="modal-header">
@@ -92,8 +92,8 @@
           </form>
         </div>  
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="submit" class="btn btn-primary" data-dismiss="modal" onclick="editFunction()">Edit</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="Close()">Close</button>
+          <button type="submit" class="btn btn-primary" data-backdrop="static" onclick="editFunction()">Edit</button>
         </div>
       </div>
     </div>
