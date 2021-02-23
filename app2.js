@@ -33,7 +33,7 @@ function Display(){
         temp += "<td>" +user.name + "</td>";
         temp += "<td>" +user.email + "</td>";
         temp += `<td><button onClick = "store(${user.id})"style="color:red" type="button" class="fas fa-trash" data-toggle="modal" data-target="#DeleteButton"></button></td>`
-        temp += `<td><button onClick = "EditFun(${user.id})"style="color:DeepSkyBlue" type="button" class="fas fa-edit" data-toggle="modal" data-target="#EditButton"></button></td>`
+        temp += `<td><button onClick = "editFun(${user.id})"style="color:DeepSkyBlue" type="button" class="fas fa-edit" data-toggle="modal" data-target="#EditButton"></button></td>`
     }
     document.getElementById("data").innerHTML = temp;
 }
@@ -92,4 +92,48 @@ function deleteFunction(){
     localStorage.removeItem(`user${a}`);
     ids = ids.filter(d => d !== a);
     Display();
+}
+function editFun(id){
+        obj=localStorage.getItem(`user${id}`);
+        document.getElementById('editName').value=JSON.parse(obj).name;
+        document.getElementById('editEmail').value=JSON.parse(obj).email;
+        store(id);
+}
+
+function editFunction(){
+    var	Name= document.getElementById('editName').value;
+	var	Email= document.getElementById('editEmail').value;
+	var mailformat = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+	if(Name === null || Name === "") 
+	{
+		alert("Enter Name");
+		document.getElementById("editName").style.borderColor = "red";
+		return false;
+	}
+	else if(Email === null || Email === ""){
+		alert("Enter Email");
+		document.getElementById("editName").style.borderColor = "black";
+		document.getElementById("editEmail").style.borderColor = "red";		
+		return false;
+	}
+	else if(!Email.match(mailformat)){
+		alert("Please Fill Email in xxx@gxxx.com format");
+		document.getElementById("editName").style.borderColor = "black";
+		document.getElementById("editEmail").style.borderColor = "red"; 
+		return false;
+	}
+    else{
+        document.getElementById("editName").style.borderColor = "black";
+		document.getElementById("editEmail").style.borderColor = "black"; 
+        let obj = {
+            id: a, 
+            name: Name,
+            email: Email
+        }
+        localStorage.setItem(`user${a}`, JSON.stringify(obj));
+        Display();
+        $('#EditButton').modal('hide');
+        return;
+    }
+
 }
