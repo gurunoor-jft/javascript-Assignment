@@ -3,24 +3,6 @@ var a;
 var fetched=false;
 count(0);
 var api_url="https://jsonplaceholder.typicode.com/users";
-// if(localStorage.length === 0){
-//     load();
-// }
-// else{
-//     let temp="";
-//     for(let i = 0; i < localStorage.length; i++) {
-//         let user = JSON.parse(localStorage.getItem(`user${i}`));
-//         temp +="<tr><td>"+ parseInt(i +1) +"</td>";
-//         temp += "<td>" +user.name + "</td>";
-//         temp += "<td>" +user.email + "</td>";
-//         temp += `<td><button onClick = "store(${user.id})"style="color:red" type="button" class="fas fa-trash" data-toggle="modal" data-target="#DeleteButton"></button></td>`
-//         temp += `<td><button onClick = "editFun(${user.id})"style="color:DeepSkyBlue" type="button" class="fas fa-edit" data-toggle="modal" data-target="#EditButton"></button></td>`
-//     }
-//     count(localStorage.length);
-//     document.getElementById("data").innerHTML = temp;
-
-// }
-load();
 Display();
 async function load() {
     let res = await fetch(api_url);
@@ -46,7 +28,7 @@ function Display(){
         temp += `<td>Add</td>`
         temp += `<td>Something</td></tr>`
     }
-   for(let i = 0; i < ids.length; i++) {
+    for(let i = 0; i < ids.length; i++) {
         let user = JSON.parse(localStorage.getItem(`user${ids[i]}`));
         temp +="<tr><td>"+ parseInt(i +1) +"</td>";
         temp += "<td>" +user.name + "</td>";
@@ -57,6 +39,7 @@ function Display(){
     count(ids.length);
     document.getElementById("data").innerHTML = temp;
 }
+load();
 
 function Close(){
 	document.getElementById("Name").value="";

@@ -13,16 +13,40 @@
 </head>
 <body>
 <div class="container-fluid">
+  <!-- Reset Modal -->
+  <div class="modal fade" id="resetData" tabindex="-1" role="dialog" data-keyboard="false" data-backdrop="static" aria-labelledby="resetData" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3 class="modal-title" id="resetButton"><strong>Reset</strong></h3>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <h5>Do You Want to Reset Data?</h5>
+        </div>  
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-primary" data-dismiss="modal" onclick="resetFunction()">Reset</button>
+        </div>
+      </div>
+    </div>
+  </div> <!--End of Reset Modal-->
     <div id="header">
         <h1>Gurunoor-JS Assignment</h1>
         <p>Count :<spam id="count"></spam></p>
         <button id="adds" type="button" class="btn btn-primary btnmar" data-toggle="modal" data-target="#AddButton">
           ADD Details
         </button>
+        <button id="resetData" type="button" class="btn btn-primary btnmar" data-toggle="modal" data-target="#resetData">
+          Reset
+        </button>
     </div>
+  
+
 
 <div id="middle">
-
  
   
   <!-- Add Modal -->
@@ -124,6 +148,6 @@
       <h1>CRUD</h1>
     </div>
 </div>  
-<script src="app2.js"></script>
+<script src="app.js"></script>
 </body>
 </html>
