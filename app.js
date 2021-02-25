@@ -111,42 +111,25 @@ function editFunction(){
 		return false;
 	}
 	else{
-    var i=1;
 	document.getElementById("editName").style.borderColor = "black";
-		document.getElementById("editEmail").style.borderColor = "black"; 
-    for(i=1;i<=dataarr.length;i++){
-        if(i === a){
-                    dataarr[i-1].name =Name;
-                    dataarr[i-1].email=Email;
-        }
-    }}
-    var temp="";
-		var i=1;
-		dataarr.forEach((u) => {
-			temp +="<tr role='row'>";
-			temp+="<td role='cell'>"+ i++ +"</td>";
-			temp+="<td id='tdName"+i+"' role='cell'>"+u.name+"</td>";
-			temp+="<td id='idEmail"+i+"' role='cell'>"+u.email+"</td>";
-			temp+='<td><button style="color:red" type="button" class="fas fa-trash" data-toggle="modal" data-target="#DeleteButton" onclick=store('+(i-1)+')></button></td>';
-				temp+='<td><button style="color:DeepSkyBlue" type="button" class="fas fa-edit" data-toggle="modal" data-target="#EditButton" onclick=editFun('+(i-1)+')></button></td>';
-			temp+="</tr>";		
-			
-		})
-		document.getElementById("data").innerHTML= temp;
-	count(i);
+	document.getElementById("editEmail").style.borderColor = "black"; 
+	let newUser = JSON.parse(localStorage.user);
+	var Name=document.getElementById('editName').value;
+	var Email=document.getElementById('editEmail').value;
+	newUser[a-1].name=Name;
+	newUser[a-1].email=Email;
+	localStorage.setItem('user', JSON.stringify(newUser));
+	display();
+	
+}
 	$('#EditButton').modal('hide');
             return;
 }
 function editFun(editid){
-	var i=1;
-	for(i=1;i<=dataarr.length;i++){
-		if(i === editid){
-			document.getElementById('editName').value=dataarr[editid -1].name;
-			document.getElementById('editEmail').value=dataarr[editid -1].email;
-			store(editid);
-			break;
-		}
-	}
+	let newUser = JSON.parse(localStorage.user).filter(u => u.id == editid);
+	document.getElementById('editName').value=newUser[0].name;
+	document.getElementById('editEmail').value=newUser[0].email;
+	store(editid);
 }
 function Close(){
 	document.getElementById("Name").value="";
