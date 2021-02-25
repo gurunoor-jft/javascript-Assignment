@@ -100,3 +100,6 @@ table {
   border-collapse: separate;
   border-spacing: 0 1em;
 }
+form span{
+  color: rgb(230, 28, 28);
+}
