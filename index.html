@@ -1,153 +1,297 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Gurunoor-JS Assignment</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"> 
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+    />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> 
-  <link rel="stylesheet" href="style.css">
-  
-</head>
-<body>
-<div class="container-fluid">
-  <!-- Reset Modal -->
-  <div class="modal fade" id="resetData" tabindex="-1" role="dialog" data-keyboard="false" data-backdrop="static" aria-labelledby="resetData" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h3 class="modal-title" id="resetButton"><strong>Reset</strong></h3>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <h5>Do You Want to Reset Data?</h5>
-        </div>  
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="submit" class="btn btn-primary" data-dismiss="modal" onclick="resetFunction()">Reset</button>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
+      integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container-fluid">
+      <!-- Reset Modal -->
+      <div
+        class="modal fade"
+        id="resetData"
+        tabindex="-1"
+        role="dialog"
+        data-keyboard="false"
+        data-backdrop="static"
+        aria-labelledby="resetData"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h3 class="modal-title" id="resetButton">
+                <strong>Reset</strong>
+              </h3>
+              <button
+                type="button"
+                class="close"
+                data-dismiss="modal"
+                aria-label="Close"
+              >
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <h5>Do You Want to Reset Data?</h5>
+            </div>
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-secondary"
+                data-dismiss="modal"
+              >
+                Close
+              </button>
+              <button
+                type="submit"
+                class="btn btn-primary"
+                data-dismiss="modal"
+                onclick="resetFunction()"
+              >
+                Reset
+              </button>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-  </div> <!--End of Reset Modal-->
-    <div id="header">
+      <!--End of Reset Modal-->
+      <div id="header">
         <h1>Gurunoor-JS Assignment</h1>
         <p>Count :<spam id="count"></spam></p>
-        <button id="adds" type="button" class="btn btn-primary btnmar" data-toggle="modal" data-target="#AddButton">
+        <button
+          id="adds"
+          type="button"
+          class="btn btn-primary btnmar"
+          data-toggle="modal"
+          data-target="#AddButton"
+        >
           ADD Details
         </button>
-        <button id="resetData" type="button" class="btn btn-primary btnmar" data-toggle="modal" data-target="#resetData">
+        <button
+          id="resetData"
+          type="button"
+          class="btn btn-primary btnmar"
+          data-toggle="modal"
+          data-target="#resetData"
+        >
           Reset
         </button>
-    </div>
-  
+      </div>
 
+      <div id="middle">
+        <!-- Add Modal -->
+        <div
+          class="modal fade"
+          id="AddButton"
+          tabindex="-1"
+          role="dialog"
+          data-keyboard="false"
+          data-backdrop="static"
+          aria-labelledby="AddButton"
+          aria-hidden="true"
+        >
+          <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h3 class="modal-title" id="AddButton">
+                  <strong>Add Details</strong>
+                </h3>
+                <button
+                  type="button"
+                  class="close"
+                  data-dismiss="modal"
+                  aria-label="Close"
+                >
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <form id="addForm">
+                  <label for="Name">Name:</label>
+                  <input type="text" id="Name" required /><span
+                    id="addNameSpan"
+                  ></span
+                  ><br />
+                  <label for="Email">Email:</label>
+                  <input type="text" id="Email" required /><span
+                    id="addEmailSpan"
+                  ></span
+                  ><br />
+                </form>
+              </div>
+              <div class="modal-footer">
+                <button
+                  type="button"
+                  class="btn btn-secondary"
+                  data-dismiss="modal"
+                  onclick="Close()"
+                >
+                  Close
+                </button>
+                <button
+                  type="submit"
+                  class="btn btn-primary"
+                  data-backdrop="static"
+                  onclick="addFunction()"
+                >
+                  ADD Details
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--End of Add Modal-->
 
-<div id="middle">
- 
-  
-  <!-- Add Modal -->
-  <div class="modal fade" id="AddButton" tabindex="-1" role="dialog" data-keyboard="false" data-backdrop="static" aria-labelledby="AddButton" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h3 class="modal-title" id="AddButton"><strong>Add Details</strong></h3>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
+        <!-- Delete Modal -->
+        <div
+          class="modal fade"
+          id="DeleteButton"
+          tabindex="-1"
+          role="dialog"
+          data-keyboard="false"
+          data-backdrop="static"
+          aria-labelledby="DeleteButton"
+          aria-hidden="true"
+        >
+          <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h3 class="modal-title" id="DeleteButton">
+                  <strong>Delete</strong>
+                </h3>
+                <button
+                  type="button"
+                  class="close"
+                  data-dismiss="modal"
+                  aria-label="Close"
+                >
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <h5>Do You Want to Delete?</h5>
+              </div>
+              <div class="modal-footer">
+                <button
+                  type="button"
+                  class="btn btn-secondary"
+                  data-dismiss="modal"
+                >
+                  Close
+                </button>
+                <button
+                  type="submit"
+                  class="btn btn-primary"
+                  data-dismiss="modal"
+                  onclick="deleteFunction()"
+                >
+                  Delete
+                </button>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="modal-body">
-          
-            <form id="addForm">
-                <label for="Name">Name:</label>
-                <input type="text" id="Name" required><span id="addNameSpan"></span><br>
-                <label for="Email">Email:</label>
-                <input type="text" id="Email" required><span id="addEmailSpan"></span><br>
-        </form>
-        </div>  
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="Close()">Close</button>
-          <button type="submit" class="btn btn-primary" data-backdrop="static" onclick="addFunction()">ADD Details</button>
+        <!--End of Delete Modal-->
+
+        <!-- Edit Modal -->
+        <div
+          class="modal fade"
+          id="EditButton"
+          tabindex="-1"
+          role="dialog"
+          data-keyboard="false"
+          data-backdrop="static"
+          aria-labelledby="EditButton"
+          aria-hidden="true"
+        >
+          <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h3 class="modal-title" id="EditButton">
+                  <strong>Edit</strong>
+                </h3>
+                <button
+                  type="button"
+                  class="close"
+                  data-dismiss="modal"
+                  aria-label="Close"
+                >
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <form>
+                  <label for="Name">Name:</label>
+                  <input type="text" id="editName" required /><span
+                    id="editNameSpan"
+                  ></span
+                  ><br />
+                  <label for="Email">Email:</label>
+                  <input type="text" id="editEmail" required /><span
+                    id="editEmailSpan"
+                  ></span
+                  ><br />
+                </form>
+              </div>
+              <div class="modal-footer">
+                <button
+                  type="button"
+                  class="btn btn-secondary"
+                  data-dismiss="modal"
+                  onclick="Close()"
+                >
+                  Close
+                </button>
+                <button
+                  type="submit"
+                  class="btn btn-primary"
+                  data-backdrop="static"
+                  onclick="editFunction()"
+                >
+                  Edit
+                </button>
+              </div>
+            </div>
+          </div>
         </div>
+        <!--End of Edit Modal-->
+
+        <table align="center" role="table">
+          <thead role="rowgroup">
+            <tr>
+              <th role="columnheader">ID</th>
+              <th role="columnheader">First Name</th>
+              <th role="columnheader">Email</th>
+              <th role="columnheader">Delete</th>
+              <th role="columnheader">Edit</th>
+            </tr>
+          </thead>
+
+          <tbody id="data" role="rowgroup"></tbody>
+        </table>
+      </div>
+      <div id="footer">
+        <h1>CRUD</h1>
       </div>
     </div>
-  </div> <!--End of Add Modal-->
-
-  
-
-  <!-- Delete Modal -->
-  <div class="modal fade" id="DeleteButton" tabindex="-1" role="dialog" data-keyboard="false" data-backdrop="static" aria-labelledby="DeleteButton" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h3 class="modal-title" id="DeleteButton"><strong>Delete</strong></h3>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <h5>Do You Want to Delete?</h5>
-        </div>  
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="submit" class="btn btn-primary" data-dismiss="modal" onclick="deleteFunction()">Delete</button>
-        </div>
-      </div>
-    </div>
-  </div> <!--End of Delete Modal-->
-
-  <!-- Edit Modal -->
-  <div class="modal fade" id="EditButton" tabindex="-1" role="dialog" data-keyboard="false" data-backdrop="static" aria-labelledby="EditButton" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h3 class="modal-title" id="EditButton"><strong>Edit</strong></h3>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <form>
-            <label for="Name">Name:</label>
-                <input type="text" id="editName" required><span id="editNameSpan"></span><br>
-                <label for="Email">Email:</label>
-                <input type="text" id="editEmail" required><span id="editEmailSpan"></span><br>
-          </form>
-        </div>  
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="Close()">Close</button>
-          <button type="submit" class="btn btn-primary" data-backdrop="static" onclick="editFunction()">Edit</button>
-        </div>
-      </div>
-    </div>
-  </div> <!--End of Edit Modal-->
-
-
-  <table align="center" role="table">
-    <thead role="rowgroup">
-      <tr>
-        <th role="columnheader">ID</th>
-        <th role="columnheader">First Name</th>
-        <th role="columnheader">Email</th>
-        <th role="columnheader">Delete</th>
-        <th role="columnheader">Edit</th>
-    </tr>
-    </thead>
-    
-    <tbody id="data" role="rowgroup">
-        
-    </tbody>
-</table>
-
-    
-  </div>
-    <div id="footer">
-      <h1>CRUD</h1>
-    </div>
-</div>  
-<script src="app.js"></script>
-</body>
+    <script src="app.js"></script>
+  </body>
 </html>
