@@ -11,7 +11,7 @@ const load = async () => {
   fetched = true;
 };
 
-if (JSON.parse(localStorage.user).length === 0) {
+if (localStorage.length === 0) {
   load();
 } else {
   display();
